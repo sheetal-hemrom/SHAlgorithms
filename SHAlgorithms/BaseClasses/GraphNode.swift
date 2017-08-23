@@ -8,20 +8,15 @@
 
 import Foundation
 
-class GraphNode{
+class GraphNode:Node{
     private var children:[GraphNode] = []
     private var neighborMap:NSMutableDictionary =  NSMutableDictionary()
-    private var name:String
     private var dependencies:Int = 0
     
-    init(_ name:String) {
-        self.name = name
-    }
-    
     func addNeighbour(graphNode : GraphNode){
-        if(neighborMap.object(forKey: graphNode.name) == nil){
+        if(neighborMap.object(forKey: graphNode.getName()) == nil){
             children.append(graphNode)
-            neighborMap.setValue(graphNode, forKey: graphNode.name)
+            neighborMap.setValue(graphNode, forKey: graphNode.getName())
             graphNode.incrementDependencies()
         }
     }
@@ -40,10 +35,6 @@ class GraphNode{
     
     func getDependencies() -> Int{
         return dependencies
-    }
-    
-    func getName() -> String{
-        return name
     }
     
 }

@@ -18,6 +18,8 @@
 		3A142ACE1F4E00750004071F /* BuildOrderWithDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A142ACD1F4E00750004071F /* BuildOrderWithDependencies.swift */; };
 		3A142AD11F4E0DCC0004071F /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A142AD01F4E0DCC0004071F /* QuestionsTableCell.swift */; };
 		3A142AD51F4E0F460004071F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A142AD41F4E0F460004071F /* Question.swift */; };
+		3A142ADD1F4E1FED0004071F /* SolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A142ADC1F4E1FED0004071F /* SolutionViewController.swift */; };
+		3A142ADF1F4E3C2B0004071F /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A142ADE1F4E3C2B0004071F /* Stack.swift */; };
 		F80B2026E0FCEAB9D7B4AFCF /* Pods_SHAlgorithms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1C63E103B2D88017437252 /* Pods_SHAlgorithms.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,8 @@
 		3A142ACD1F4E00750004071F /* BuildOrderWithDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuildOrderWithDependencies.swift; path = Solutions/BuildOrderWithDependencies.swift; sourceTree = "<group>"; };
 		3A142AD01F4E0DCC0004071F /* QuestionsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionsTableCell.swift; path = Views/QuestionsTableCell.swift; sourceTree = "<group>"; };
 		3A142AD41F4E0F460004071F /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = Models/Question.swift; sourceTree = "<group>"; };
+		3A142ADC1F4E1FED0004071F /* SolutionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SolutionViewController.swift; path = Controllers/SolutionViewController.swift; sourceTree = "<group>"; };
+		3A142ADE1F4E3C2B0004071F /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = BaseClasses/Stack.swift; sourceTree = "<group>"; };
 		5331D021B8A103A9787DF63C /* Pods-SHAlgorithms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHAlgorithms.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHAlgorithms/Pods-SHAlgorithms.debug.xcconfig"; sourceTree = "<group>"; };
 		7159AABF5A0DBA71CB7B9CC1 /* Pods-SHAlgorithms.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHAlgorithms.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHAlgorithms/Pods-SHAlgorithms.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,12 +85,12 @@
 		3A142AB21F4CD0530004071F /* SHAlgorithms */ = {
 			isa = PBXGroup;
 			children = (
+				3A142ADB1F4E1FC80004071F /* Controllers */,
 				3A142AD31F4E0F1F0004071F /* Models */,
 				3A142ACF1F4E0D9D0004071F /* Views */,
 				3A142ACC1F4DFFD00004071F /* Solutions */,
 				3A142AC51F4CD30B0004071F /* BaseClasses */,
 				3A142AB31F4CD0530004071F /* AppDelegate.swift */,
-				3A142AB51F4CD0530004071F /* ViewController.swift */,
 				3A142AB71F4CD0530004071F /* Main.storyboard */,
 				3A142ABA1F4CD0530004071F /* Assets.xcassets */,
 				3A142ABC1F4CD0530004071F /* LaunchScreen.storyboard */,
@@ -101,6 +105,7 @@
 				3A142AC61F4CD34C0004071F /* Node.swift */,
 				3A142AC81F4CD6040004071F /* Graph.swift */,
 				3A142ACA1F4CD6850004071F /* GraphNode.swift */,
+				3A142ADE1F4E3C2B0004071F /* Stack.swift */,
 			);
 			name = BaseClasses;
 			sourceTree = "<group>";
@@ -127,6 +132,15 @@
 				3A142AD41F4E0F460004071F /* Question.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		3A142ADB1F4E1FC80004071F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A142AB51F4CD0530004071F /* ViewController.swift */,
+				3A142ADC1F4E1FED0004071F /* SolutionViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		A0CEC6CAD808385495C118C5 /* Pods */ = {
@@ -265,7 +279,9 @@
 				3A142AD51F4E0F460004071F /* Question.swift in Sources */,
 				3A142AC91F4CD6040004071F /* Graph.swift in Sources */,
 				3A142AC71F4CD34C0004071F /* Node.swift in Sources */,
+				3A142ADD1F4E1FED0004071F /* SolutionViewController.swift in Sources */,
 				3A142AD11F4E0DCC0004071F /* QuestionsTableCell.swift in Sources */,
+				3A142ADF1F4E3C2B0004071F /* Stack.swift in Sources */,
 				3A142AB61F4CD0530004071F /* ViewController.swift in Sources */,
 				3A142AB41F4CD0530004071F /* AppDelegate.swift in Sources */,
 				3A142ACE1F4E00750004071F /* BuildOrderWithDependencies.swift in Sources */,

@@ -23,8 +23,8 @@ class Graph{
     
     
     func addEdge(root:String , dependent:String){
-        let graphNodeRoot:GraphNode = GraphNode(root)
-        let graphNodeDependent:GraphNode = GraphNode(dependent)
+        let graphNodeRoot:GraphNode = getOrCreateNode(root)
+        let graphNodeDependent:GraphNode = getOrCreateNode(dependent)
         graphNodeRoot.addNeighbour(graphNode: graphNodeDependent)
     }
     

@@ -13,9 +13,7 @@ import Foundation
 
 class BuildOrderWithDependencies{
     
-    
-    
-    func findBuildOrder(_ projects : [String] , _ dependencies : [[String]]) -> [GraphNode]
+    func findBuildOrderBFS(_ projects : [String] , _ dependencies : [[String]]) -> [GraphNode]
     {
         // Dependencies should be in format : (d,a),(b,f),(a,d)
         
@@ -23,8 +21,22 @@ class BuildOrderWithDependencies{
         return orderProjectsBFS(projects: graph.getNodes())
     }
     
-    func orderProjectsBFS(projects : [GraphNode]) -> [GraphNode]{
-        var orderedGraphNodes:[GraphNode?] = []
+    func findBuildOrderDFS(_ projects : [String] , _ dependencies : [[String]]) -> [GraphNode]
+    {
+        // Dependencies should be in format : (d,a),(b,f),(a,d)
+        
+        let graph = Graph.buildGraph(graphNodes: projects, dependencies: dependencies)
+        let stack = orderProjectsDFS(projects: graph.getNodes())
+        if stack != nil{
+            return stack?.getElelments() as! [GraphNode]
+        }
+        return []
+    }
+    
+    
+    private func orderProjectsBFS(projects : [GraphNode]) -> [GraphNode]{
+        let count = projects.count
+        var orderedGraphNodes:[GraphNode?] = [GraphNode?](repeating: nil, count: count)
         var endOfOrderedListOffset = 0
         
         // Add all the nondependents to order list since this projects will be executed first and increment the ordered list offset
@@ -51,7 +63,7 @@ class BuildOrderWithDependencies{
     }
     
     
-    func addNonDependentToOrderedList( list : inout [GraphNode?] , projects : [GraphNode] , offset : inout Int) -> Int{
+    private func addNonDependentToOrderedList( list : inout [GraphNode?] , projects : [GraphNode] , offset : inout Int) -> Int{
         for node:GraphNode in projects
         {
             if (node.getDependencies() == 0) {
@@ -60,6 +72,39 @@ class BuildOrderWithDependencies{
             }
         }
         return offset
+    }
+    
+    private func orderProjectsDFS(projects : [GraphNode]) -> Stack?{
+        var stack =  Stack()
+        for project:GraphNode in projects {
+            if(project.state == .NEVER){
+                if (!doDFS(node: project, stack: &stack)){
+                    return nil
+                }
+            }
+        }
+        return stack
+    }
+    
+    private func doDFS(node:GraphNode ,stack : inout Stack) -> Bool{
+        
+        if node.state == .PARTIALLY{
+            return false
+        }
+        
+        if( node.state == .NEVER){
+            node.state = VISITED.PARTIALLY
+            for child:GraphNode in node.getChildren(){
+                if (!doDFS(node: child,stack: &stack)){
+                    return false
+                }
+            }
+        }
+        if(node.state != .COMPLETE){
+            node.state = VISITED.COMPLETE
+            stack.push(node)
+        }
+        return true
     }
     
 }

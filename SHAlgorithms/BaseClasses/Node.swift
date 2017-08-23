@@ -8,13 +8,23 @@
 
 import Foundation
 
+enum VISITED {
+    case NEVER
+    case PARTIALLY
+    case COMPLETE
+}
+
 class Node{
     var leftNode:Node? = nil
     var rightNode:Node? = nil
-    private var value:NSNumber? = nil
+    private var name:String?
+    var state:VISITED = VISITED.NEVER
     
-    init(_ value:NSNumber) {
-        self.value = value
+    init(_ name:String) {
+        self.name = name
     }
     
+    func getName() -> String {
+        return self.name!
+    }
 }
