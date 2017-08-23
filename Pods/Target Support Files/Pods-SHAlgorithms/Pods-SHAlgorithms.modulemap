@@ -1,0 +1,6 @@
+framework module Pods_SHAlgorithms {
+  umbrella header "Pods-SHAlgorithms-umbrella.h"
+
+  export *
+  module * { export * }
+}
