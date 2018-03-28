@@ -50,6 +50,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func addQuestions(){
         let question = Question("You are given a list of projects(GraphNodes) and list of dependencies(which is a list of pairs of projects , where the first project is dependent on the second  project). All of project's dependencies must be built before the project is. Find a build order that will allow projects to be built. If there is no valid build order , return a error", id: questions.count)
         questions.append(question)
+        
+        let question2 = Question("Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional nodes in a data structure. N:B: This is not necessarily a binary serach tree", id: questions.count)
+        questions.append(question2)
+        
         questionTable?.delegate = self
         questionTable?.dataSource = self
         questionTable?.reloadData()

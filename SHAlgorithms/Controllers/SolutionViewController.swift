@@ -23,7 +23,7 @@ class SolutionViewController: UIViewController {
     
     
     var question:Question?
-    var projects:[String] = []
+    var nodes:[String] = []
     var dependencies:[[String]] = []
     
     override func viewDidLoad() {
@@ -38,11 +38,11 @@ class SolutionViewController: UIViewController {
     }
     
     @IBAction func addNodes(_ sender : UIButton){
-        projects.append((enterNodes?.text)!)
+        nodes.append((enterNodes?.text)!)
         enterNodes?.text = ""
         var nodesToDisplay:String = ""
-        for project in projects{
-            nodesToDisplay.append(project + ",")
+        for node in nodes{
+            nodesToDisplay.append(node + ",")
         }
         displayNodes?.text = nodesToDisplay
     }
@@ -60,10 +60,26 @@ class SolutionViewController: UIViewController {
     }
     
     @IBAction func calculate(_ sender : UIButton){
-        
+        calculateAnswer()
+    }
+    
+    func calculateAnswer(){
+        switch (question?.id)! {
+        case 0:
+            findBuildOrder()
+            break
+        case 1:
+            findCommonAncestor(p: Node("7"),q: Node("17"))
+            break
+        default:
+            break
+        }
+    }
+    
+    func findBuildOrder(){
         let buildOrderClass:BuildOrderWithDependencies = BuildOrderWithDependencies()
-        let orderedNodesBFS:[GraphNode] = buildOrderClass.findBuildOrderBFS(projects, dependencies)
-        let orderedNodesDFS:[GraphNode] = buildOrderClass.findBuildOrderDFS(projects, dependencies)
+        let orderedNodesBFS:[GraphNode] = buildOrderClass.findBuildOrderBFS(nodes, dependencies)
+        let orderedNodesDFS:[GraphNode] = buildOrderClass.findBuildOrderDFS(nodes, dependencies)
         var nodesToDisplayBFS:String = ""
         var nodesToDisplayDFS:String = ""
         for graphnode in orderedNodesBFS {
@@ -73,6 +89,13 @@ class SolutionViewController: UIViewController {
             nodesToDisplayDFS.append(graphnode.getName() + ",")
         }
         solutionLabel?.text = "BFS : " + nodesToDisplayBFS + "and DFS : " + nodesToDisplayDFS
+    }
+    
+    func findCommonAncestor(p: Node? , q:Node?){
+        let treeNode  = Tree(nodenames: nodes)
+        let commonAncestorClass:CommonAncestor = CommonAncestor(treeNode.treeNode! , isAncestor: false)
+        let commonAncestor = commonAncestorClass.commonAncestor(p: p, q: q)
+        solutionLabel?.text = "Common Ancestor is : " + commonAncestor!.node.getName()
     }
     
     /*
